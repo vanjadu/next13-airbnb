@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import './globals.css'
 import { Nunito } from 'next/font/google'
 import ToasterProvider from './providers/ToasterProvider'
+import LoginModal from './components/Modals/LoginModal'
+import getCurrentUser from './actions/getCurrentUser'
 
 export const metadata = {
   title: 'Airbnb',
@@ -17,13 +19,16 @@ interface RootProps {
   children: React.ReactNode
 }
 
-export default function RootLayout({ children }: RootProps) {
+export default async function RootLayout({ children }: RootProps) {
+  const currentUser = await getCurrentUser()
+
   return (
     <html lang='en'>
       <body className={font.className}>
         <ClientComponent>
-          <Navbar />
+          <Navbar currentUser={currentUser} />
           <RegisterModal />
+          <LoginModal />
           <ToasterProvider />
         </ClientComponent>
         <main>{children}</main>
