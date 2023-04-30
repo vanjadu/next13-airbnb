@@ -40,8 +40,8 @@ const RegisterModal = () => {
         toast.success('Success!')
       })
       .catch((err) => {
-        console.log(err)
         toast.error('Something went wrong!')
+        loginModal.onOpen()
       })
       .finally(() => {
         setIsLoading(false)

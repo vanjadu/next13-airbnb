@@ -11,6 +11,9 @@ import RentModal from './components/Modals/RentModal'
 export const metadata = {
   title: 'Airbnb',
   description: 'Airbnb Clone',
+  icons: {
+    icon: './assets/favicon.svg',
+  },
 }
 const font = Nunito({
   subsets: ['latin'],
@@ -33,7 +36,7 @@ export default async function RootLayout({ children }: RootProps) {
           <RentModal />
           <ToasterProvider />
         </ClientComponent>
-        <main>{children}</main>
+        <main className='pb-20 pt-28'>{children}</main>
       </body>
     </html>
   )
