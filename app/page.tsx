@@ -4,9 +4,14 @@ import ClientComponent from './components/ClientComponent'
 import Container from './components/Container'
 import EmptyState from './components/EmptyState'
 import ListingCard from './components/ListingCard'
+import { IListingsParams } from './actions/getListings'
 
-export default async function Home() {
-  const listings = await getListings()
+interface HomeProps {
+  searchParams: IListingsParams
+}
+
+const Home = async ({ searchParams }: HomeProps) => {
+  const listings = await getListings(searchParams)
   const currentUser = await getCurrentUser()
 
   if (listings.length === 0) {
@@ -35,3 +40,5 @@ export default async function Home() {
     </div>
   )
 }
+
+export default Home
