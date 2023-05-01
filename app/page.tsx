@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import getCurrentUser from './actions/getCurrentUser'
 import getListings, { IListingsParams } from './actions/getListings'
 import ClientComponent from './components/ClientComponent'
@@ -8,8 +10,6 @@ import ListingCard from './components/ListingCard'
 interface HomeProps {
   searchParams: IListingsParams
 }
-
-export const dynamic = 'force-dynamic'
 
 const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams)
